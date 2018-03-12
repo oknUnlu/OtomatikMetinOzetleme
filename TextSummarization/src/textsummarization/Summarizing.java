@@ -513,11 +513,24 @@ public class Summarizing {
 
 		String[] paragraph = new String[100];
 		String str = null;
-
+		
+		int temp = 0;
+		int c = 0;
 		paragraph = Sentence.split("(\\.)");
+		
+		for(int i = 0; i <counter.length; i++) {
+			if(counter[i] != 0)
+				c++; //Cümle sayısı hesaplanıyor
+		}
+		
+		for(int i = 0; i < counter.length; i++) {
+			temp += counter[i]; //Cümle puanları toplamı değişkene atanıyor
+		}
+		
+		temp = temp / c; //Cümle puanlarının ortalaması alınyor
 
-		for (int i = 0; i < counter.length; i++) {
-			if (counter[i] > 0) {
+		for (int i = 0; i < c; i++) {
+			if (counter[i] > temp) {
 				str += paragraph[i] + " .";
 			}
 		}
